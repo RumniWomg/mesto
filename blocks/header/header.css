@@ -1,0 +1,13 @@
+.header {
+  margin: 45px auto 0;
+  max-width: 880px;
+}
+
+.header::after {
+  display: block;
+  content: '';
+  background-color: #545454;
+  opacity: .7;
+  height: 1px;
+  margin: 41px 0 40px;
+}
