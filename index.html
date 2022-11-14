@@ -23,6 +23,18 @@
       </div>
       <img class="profile__add-button" src="/images/add-button.svg" alt="Кнопка добавить">
     </div>
+    <div class="popup">
+      <form class="popup__container">
+        <h3 class="popup__heading">Пожаловаться</h3>
+        <img class="popup__close-icon" src="./images/Close Icon.svg" alt="закрытие формы">
+        <input class="popup__field popup__field_name" type="text" name="username" id="username" placeholder="Ваше имя">
+        <input class="popup__field popup__field_email" type="email" name="email" id="email"
+          placeholder="вашапочта@мыло.ру">
+        <textarea class="popup__field popup__field_textarea" name="complaint" id="complaint" cols="30" rows="10"
+          placeholder="Ну давайте, жалуйтесь..."></textarea>
+        <button class="popup__btn" type="submit">Отправить</button>
+      </form>
+    </div>
     <ul class="grid-places">
       <li class="grid-places__item">
         <img class="grid-places__image" src="./images/Эльбрус.png" alt="Изображение места">
@@ -71,5 +83,6 @@
   <footer class="footer">
     <p class="footer__copyrigth">&copy; 2022 Яковлев Денис</p>
   </footer>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
