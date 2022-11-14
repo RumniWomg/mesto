@@ -1,0 +1,11 @@
+.grid-places__text {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color: black;
+  margin: 0 5px 0 20px;
+  max-width: 200px;
+  padding: 0;
+  align-self: center;
+}

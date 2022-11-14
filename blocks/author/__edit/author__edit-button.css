@@ -1,0 +1,9 @@
+.author__edit-button {
+  align-self: flex-end;
+  margin: 0 0 10px 19px;
+}
+
+.author__edit-button:hover {
+  opacity: .45;
+  transition: 1s;
+}
