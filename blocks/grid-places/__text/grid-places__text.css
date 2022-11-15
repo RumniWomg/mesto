@@ -8,4 +8,7 @@
   max-width: 200px;
   padding: 0;
   align-self: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

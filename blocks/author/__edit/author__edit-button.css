@@ -1,9 +1,15 @@
 .author__edit-button {
   align-self: flex-end;
-  margin: 0 0 10px 19px;
+  margin: 0 10px 10px 19px;
 }
 
 .author__edit-button:hover {
   opacity: .45;
   transition: 1s;
+}
+
+@media screen and (max-width: 950px) {
+  .author__edit-button {
+    
+  }
 }

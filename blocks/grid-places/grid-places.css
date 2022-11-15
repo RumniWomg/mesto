@@ -8,3 +8,17 @@
   column-gap: 17px;
   display: grid;
 }
+
+@media screen and (max-width: 950px) {
+  .grid-places {
+    margin: 0 19px 0;
+  }
+}
+
+@media screen and (max-width: 635px) {
+  .grid-places {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
