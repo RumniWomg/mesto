@@ -12,6 +12,8 @@
   .author__title {
     font-size: 27px;
     line-height: 33px;
-    max-width: 189px;
+    align-self: center;
+    justify-self: center;
+    letter-spacing: 1px;
   }
 }

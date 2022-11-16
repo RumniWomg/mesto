@@ -8,8 +8,10 @@
   transition: 1s;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 590px) {
   .author__edit-button {
-    
+    margin: 0 0 0 10px;
+    align-self: center;
+    justify-self: center;
   }
 }

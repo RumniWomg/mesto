@@ -1,6 +1,7 @@
 .grid-places__like {
   margin: 0 20px;
   align-self: center;
+  background-color: transparent;
 }
 
 .grid-places__like:hover {

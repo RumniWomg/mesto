@@ -12,3 +12,10 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+@media screen and (max-width: 600px) {
+  .popup__field {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
