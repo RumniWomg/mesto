@@ -1,7 +1,14 @@
 .grid-places__like {
-  margin: 0 20px;
+  border: none;
+  background-color: #FFF;
+  background-image: url(../../../images/like.svg);
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 19px;
+  margin: 0;
   align-self: center;
-  background-color: transparent;
+  padding: 0 22px 0 22px;
+  cursor: pointer;
 }
 
 .grid-places__like:hover {

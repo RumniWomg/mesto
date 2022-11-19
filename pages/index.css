@@ -13,7 +13,7 @@
 @import url(../blocks/author/__photo/author__photo.css);
 @import url(../blocks/author/__edit/author__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
-@import url(../blocks/profile/__add-button/_crest/profile__add-button_crest.css);
+@import url(../blocks/profile/__add-button-crest/profile__add-button-crest.css);
 
 @import url(../blocks/grid-places/grid-places.css);
 @import url(../blocks/grid-places/__item/grid-places__item.css);
@@ -21,6 +21,7 @@
 @import url(../blocks/grid-places/__text/grid-places__text.css);
 @import url(../blocks/grid-places/__like/grid-places__like.css);
 @import url(../blocks/grid-places/__image/grid-places__image.css);
+@import url(../blocks/grid-places/__like/_active/grid-places__like_active.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__btn/popup__btn.css);
