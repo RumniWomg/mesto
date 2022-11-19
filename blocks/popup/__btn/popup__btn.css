@@ -16,7 +16,6 @@
   text-transform: uppercase;
   transition: 0.5s all;
   border-radius: 2px;
-  cursor: pointer;
 }
 
 .popup__btn:hover {
