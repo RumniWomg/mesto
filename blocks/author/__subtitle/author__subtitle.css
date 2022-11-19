@@ -5,6 +5,10 @@
   font-size: 20px;
   line-height: 15px;
   font-family: Inter, Arial, Helvetica, sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 300px;
 }
 
 @media screen and (max-width: 590px) {
@@ -16,5 +20,6 @@
     align-self: center;
     margin-top: 12px;
     letter-spacing: .03rem;
+    max-width: 200px;
   }
 }
