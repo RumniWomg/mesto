@@ -1,4 +1,4 @@
-.author {  display: grid;
+.profile__author {  display: grid;
   grid-template-columns: minmax(140px , 150px) 1fr 0.2fr;
   grid-template-rows: 1fr 0.7fr;
   gap: 0px 0px;
@@ -8,23 +8,23 @@
     "avatar subtitle .";
 }
 
-.author__photo { grid-area: avatar; }
+.profile__photo { grid-area: avatar; }
 
-.author__title { grid-area: title; }
+.profile__title { grid-area: title; }
 
-.author__subtitle { grid-area: subtitle; }
+.profile__subtitle { grid-area: subtitle; }
 
-.author__edit-button { grid-area: button; }
+.profile__edit-button { grid-area: button; }
 
 
 @media screen and (max-width: 950px) {
-  .author {
+  .profile__author {
     margin: 0 19px 0;
   }
 }
 
 @media screen and (max-width: 750px) {
-  .author {
+  .profile__author {
     margin: 0 19px 0;
     grid-template-columns: 1fr 0.5fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -37,7 +37,7 @@
 }
 
 @media screen and (max-width: 590px) {
-  .author {
+  .profile__author {
     margin: 0;
     align-self: center;
     grid-template-columns: 1fr max-content;
