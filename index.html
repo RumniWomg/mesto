@@ -27,76 +27,45 @@
     </section>
     <section class="places-list">
       <ul class="grid-places">
-        <li class="grid-places__item">
-          <img class="grid-places__image" src="./images/Эльбрус.png" alt="Изображение места">
-          <div class="grid-places__info-block">
-            <h2 class="grid-places__text">Гора Эльбрус</h2>
-            <button class="grid-places__like" type="button" aria-label="нравится"></button>
-          </div>
-        </li>
-        <li class="grid-places__item">
-          <img class="grid-places__image" src="./images/Домбай.png" alt="Изображение места">
-          <div class="grid-places__info-block">
-            <h2 class="grid-places__text">Домбай</h2>
-            <button class="grid-places__like" type="button" aria-label="нравится"></button>
-          </div>
-        </li>
-        <li class="grid-places__item">
-          <img class="grid-places__image" src="./images/Чёртов_мост.png" alt="Изображение места">
-          <div class="grid-places__info-block">
-            <h2 class="grid-places__text">Габленц, Саксония</h2>
-            <button class="grid-places__like" type="button" aria-label="нравится"></button>
-          </div>
-        </li>
-        <li class="grid-places__item">
-          <img class="grid-places__image" src="./images/Кинта_да_Регалейра.jpg" alt="Изображение места">
-          <div class="grid-places__info-block">
-            <h2 class="grid-places__text">Синтра, Португалия</h2>
-            <button class="grid-places__like" type="button" aria-label="нравится"></button>
-          </div>
-        </li>
-        <li class="grid-places__item">
-          <img class="grid-places__image" src="./images/Карачаевск.png" alt="Изображение места">
-          <div class="grid-places__info-block">
-            <h2 class="grid-places__text">Карачаевск</h2>
-            <button class="grid-places__like" type="button" aria-label="нравится"></button>
-          </div>
-        </li>
-        <li class="grid-places__item">
-          <img class="grid-places__image" src="./images/Гора_Рорайма.png" alt="Изображение места">
-          <div class="grid-places__info-block">
-            <h2 class="grid-places__text">Гора Рорайма</h2>
-            <button class="grid-places__like" type="button" aria-label="нравится"></button>
-          </div>
-        </li>
+        
       </ul>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyrigth">&copy; 2022 Яковлев Денис</p>
   </footer>
-  <div class="popup-profile">
+  <div class="popup popup_profile">
     <div class="popup__container">
       <h2 class="popup__heading">Редактировать профиль</h2>
-      <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
-      <form class="form-edit" name="profile-edit">
+      <button class="popup__close-icon popup__close-icon_profile" type="button" aria-label="закрыть"></button>
+      <form class="profile__form-edit" name="profile-edit">
         <input class="popup__input popup__input_field_name" type="text" name="username" id="username">
         <input class="popup__input popup__input_field_aboutme" type="text" name="aboutme" id="aboutme">
         <button class="popup__btn" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
-  <div class="popup-addmesto">
-    <div class="popup-addmesto__container">
-      <h2 class="popup-addmesto__heading">Редактировать профиль</h2>
-      <button class="popup-addmesto__close-icon" type="button" aria-label="закрыть"></button>
-      <form class="form-edit" name="profile-edit">
-        <input class="popup-addmesto__input popup-addmesto__input_field_name" type="text" name="username" id="username">
-        <input class="popup-addmesto__input popup-addmesto__input_field_aboutme" type="text" name="aboutme" id="aboutme">
-        <button class="popup-addmesto__btn" type="submit">Сохранить</button>
+  <div class="popup popup_card">
+    <div class="popup__container">
+      <h2 class="popup__heading">Новое место</h2>
+      <button class="popup__close-icon popup__close-icon_card" type="button" aria-label="закрыть"></button>
+      <form class="form-edit" name="card-edit">
+        <input class="popup__input popup__input_mesto-name" type="text" name="username" id="mesto-name" placeholder="Название">
+        <input class="popup__input popup__input_picture" type="text" name="aboutme" id="link-picture" placeholder="Ссылка на картинку">
+        <button class="popup__btn" type="submit">Сохранить</button>
       </form>
     </div>
-  </div> -->
+  </div>
+  <template id="card-template">  
+    <li class="grid-places__item">
+      <button class="grid-places__trash" type="button" aria-label="удалить"></button>
+      <img class="grid-places__image" src="./images/Гора_Рорайма.png" alt="Изображение места">
+      <div class="grid-places__info-block">
+        <h2 class="grid-places__text">Гора Рорайма</h2>
+        <button class="grid-places__like" type="button" aria-label="нравится"></button>
+      </div>
+    </li>
+  </template>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
