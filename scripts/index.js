@@ -37,8 +37,37 @@ const popupCard = document.querySelector('.popup_card'); // Фон попап о
 const openPopupCard = document.querySelector('.profile__add-button'); // Кнопкa для показа окна
 const closePopupCard = document.querySelector('.popup__close-icon_card'); // Кнопка для скрытия окна
 const formElementCard = document.querySelector('.form-edit')
-const nameInputCard = document.querySelector('.popup__input_field_name')
-const jobInputCard = document.querySelector('.popup__input_field_aboutme')
+const nameInputCard = document.querySelector('.popup__input_mesto-name')
+const linkInputCard = document.querySelector('.popup__input_picture')
+const cardTempalte = document.querySelector('#card-template').content.querySelector('.grid-places__item');
+const cardContainer = document.querySelector('.grid-places')
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
 
 const openCardPopup = function () {
@@ -49,13 +78,43 @@ const closeCardPopup = function () {
   popupCard.classList.remove('popup_opened');
 }
 
-function formSubmitHandlerCard (evt) {
-  evt.preventDefault();
-  
-
-  closePopup();
+const handleChecklike = (event) => {
+  event.target.closest('.grid-places__like').classList.toggle('grid-places__like_active');
 }
+
+
+const generateCard = (dataCard) => {
+  const newCard = cardTempalte.cloneNode(true);
+
+  const title = newCard.querySelector('.grid-places__text');
+  title.textContent = dataCard.name;
+
+  const image = newCard.querySelector('.grid-places__image');
+  image.setAttribute('src', dataCard.link);
+
+  const checkLike = newCard.querySelector('.grid-places__like');
+  checkLike.addEventListener('click', handleChecklike)
+
+  return newCard
+}
+
+const formSubmitHandlerCard = (evt) => {
+  evt.preventDefault();
+  renderCard({ name: nameInputCard.value, link: linkInputCard.value })
+  nameInputCard.value = '';
+  linkInputCard.value = '';
+
+  closeCardPopup();
+}
+
+const renderCard = (dataCard) => {
+  cardContainer.prepend(generateCard(dataCard));
+};
 
 openPopupCard.addEventListener('click', openCardPopup);
 closePopupCard.addEventListener('click', closeCardPopup);
 formElementCard.addEventListener('submit', formSubmitHandlerCard);
+
+initialCards.forEach((dataCard) => {
+  renderCard(dataCard);
+});
