@@ -75,13 +75,24 @@
   <footer class="footer">
     <p class="footer__copyrigth">&copy; 2022 Яковлев Денис</p>
   </footer>
-  <div class="popup">
+  <div class="popup popup_profile">
     <div class="popup__container">
       <h2 class="popup__heading">Редактировать профиль</h2>
-      <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
-      <form class="form-edit" name="profile-edit">
+      <button class="popup__close-icon popup__close-icon_profile" type="button" aria-label="закрыть"></button>
+      <form class="profile__form-edit" name="profile-edit">
         <input class="popup__input popup__input_field_name" type="text" name="username" id="username">
         <input class="popup__input popup__input_field_aboutme" type="text" name="aboutme" id="aboutme">
+        <button class="popup__btn" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_card">
+    <div class="popup__container">
+      <h2 class="popup__heading">Новое место</h2>
+      <button class="popup__close-icon popup__close-icon_card" type="button" aria-label="закрыть"></button>
+      <form class="form-edit" name="card-edit">
+        <input class="popup__input popup__input_field_name" type="text" name="username" id="username" placeholder="Название">
+        <input class="popup__input popup__input_field_aboutme" type="text" name="aboutme" id="aboutme" placeholder="Ссылка на картинку">
         <button class="popup__btn" type="submit">Сохранить</button>
       </form>
     </div>
