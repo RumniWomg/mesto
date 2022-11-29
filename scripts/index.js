@@ -82,6 +82,10 @@ const handleChecklike = (event) => {
   event.target.closest('.grid-places__like').classList.toggle('grid-places__like_active');
 }
 
+const handleDelete = (evt) => {
+  evt.target.closest('.grid-places__item').remove()
+}
+
 
 const generateCard = (dataCard) => {
   const newCard = cardTempalte.cloneNode(true);
@@ -94,6 +98,9 @@ const generateCard = (dataCard) => {
 
   const checkLike = newCard.querySelector('.grid-places__like');
   checkLike.addEventListener('click', handleChecklike)
+
+  const deleteCard = newCard.querySelector('.grid-places__trash');
+  deleteCard.addEventListener('click', handleDelete)
 
   return newCard
 }

@@ -1,19 +1,19 @@
 .grid-places__trash {
   position: absolute;
-  top: 1px;
-  right: 1px;
+  top: 20px;
+  right: 20px;
   border: none;
-  background-image: url(../../../images/trash.svg );
+  background-color: rgba(0, 0, 0, .0);
+  background-image: url(../../../images/trash.svg);
   background-repeat: no-repeat;
   width: 18px;
   height: 19px;
   margin: 0;
   padding: 0;
   cursor: pointer;
-  z-index: 5;
 }
 
-.grid-places__like:hover {
+.grid-places__trash:hover {
   opacity: .45;
   transition: 1s;
 }
