@@ -36,11 +36,11 @@ formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
 const popupCard = document.querySelector('.popup_card'); // Фон попап окна
 const openPopupCard = document.querySelector('.profile__add-button'); // Кнопкa для показа окна
 const closePopupCard = document.querySelector('.popup__close-icon_card'); // Кнопка для скрытия окна
-const formElementCard = document.querySelector('.form-edit')
-const nameInputCard = document.querySelector('.popup__input_mesto-name')
-const linkInputCard = document.querySelector('.popup__input_picture')
+const formElementCard = document.querySelector('.form-edit');
+const nameInputCard = document.querySelector('.popup__input_mesto-name');
+const linkInputCard = document.querySelector('.popup__input_picture');
 const cardTempalte = document.querySelector('#card-template').content.querySelector('.grid-places__item');
-const cardContainer = document.querySelector('.grid-places')
+const cardContainer = document.querySelector('.grid-places');
 
 const initialCards = [
   {
@@ -83,7 +83,7 @@ const handleChecklike = (event) => {
 }
 
 const handleDelete = (evt) => {
-  evt.target.closest('.grid-places__item').remove()
+  evt.target.closest('.grid-places__item').remove();
 }
 
 
@@ -107,7 +107,7 @@ const generateCard = (dataCard) => {
 
 const formSubmitHandlerCard = (evt) => {
   evt.preventDefault();
-  renderCard({ name: nameInputCard.value, link: linkInputCard.value })
+  renderCard({ name: nameInputCard.value, link: linkInputCard.value });
   nameInputCard.value = '';
   linkInputCard.value = '';
 
@@ -125,3 +125,29 @@ formElementCard.addEventListener('submit', formSubmitHandlerCard);
 initialCards.forEach((dataCard) => {
   renderCard(dataCard);
 });
+
+
+
+// Попап с картинкой
+const popupPicture = document.querySelector('.popup_picture'); // Фон попап окна
+const closePopupPicture = document.querySelector('.popup__close-icon_picture'); // Кнопка для скрытия окна
+
+const closePopapPicture = () => {
+  popupPicture.classList.remove('popup_opened');
+}
+
+const popapImage = (event) => {
+  const picture = document.querySelector('.popap__image');
+  const pictureSrc = event.target.closest('.grid-places__image').getAttribute('src');
+  const figcptn = document.querySelector('.popap__figcptn');
+  const textContentPicture = event.target.parentElement.querySelector('.grid-places__text').textContent;
+  
+  picture.setAttribute('src', pictureSrc);
+  figcptn.textContent = textContentPicture;
+
+  popupPicture.classList.add('popup_opened');
+}
+console.log()
+
+closePopupPicture.addEventListener('click', closePopapPicture)
+cardContainer.addEventListener('click', popapImage)
