@@ -3,7 +3,7 @@
 const popupProfile = document.querySelector('.popup_profile'); // Фон попап окна
 const openPopupProfile = document.querySelector('.profile__edit-button'); // Кнопкa для показа окна
 const closePopupProfile = document.querySelector('.popup__close-icon_profile'); // Кнопка для скрытия окна
-const formElementProfile = document.querySelector('.profile__form-edit')
+const formElementProfile = document.querySelector('.popup__form-edit')
 const nameInputProfile = document.querySelector('.popup__input_field_name')
 const jobInputProfile = document.querySelector('.popup__input_field_aboutme')
 const profileTitle = document.querySelector('.profile__title');
@@ -137,9 +137,9 @@ const closePopapPicture = () => {
 }
 
 const popapImage = (event) => {
-  const picture = document.querySelector('.popap__image');
+  const picture = document.querySelector('.popup__image');
   const pictureSrc = event.target.closest('.grid-places__image').getAttribute('src');
-  const figcptn = document.querySelector('.popap__figcptn');
+  const figcptn = document.querySelector('.popup__figcptn');
   const textContentPicture = event.target.parentElement.querySelector('.grid-places__text').textContent;
   
   picture.setAttribute('src', pictureSrc);
