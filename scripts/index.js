@@ -80,11 +80,12 @@ const closeCardPopup = function () {
 }
 
 const handleChecklike = (event) => {
+  event.stopImmediatePropagation();
   event.target.closest('.grid-places__like').classList.toggle('grid-places__like_active');
 }
 
 const handleDelete = (evt) => {
-  evt.stopImmediatePropagation()
+  evt.stopImmediatePropagation();
   evt.target.closest('.grid-places__item').remove();
 }
 
