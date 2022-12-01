@@ -41,6 +41,7 @@ const nameInputCard = document.querySelector('.popup__input_mesto-name');
 const linkInputCard = document.querySelector('.popup__input_picture');
 const cardTempalte = document.querySelector('#card-template').content.querySelector('.grid-places__item');
 const cardContainer = document.querySelector('.grid-places');
+const listenerImage = document.querySelector('.grid-places__item');
 
 const initialCards = [
   {
@@ -83,6 +84,7 @@ const handleChecklike = (event) => {
 }
 
 const handleDelete = (evt) => {
+  evt.stopImmediatePropagation()
   evt.target.closest('.grid-places__item').remove();
 }
 
@@ -147,7 +149,7 @@ const popapImage = (event) => {
 
   popupPicture.classList.add('popup_opened');
 }
-console.log()
+
 
 closePopupPicture.addEventListener('click', closePopapPicture)
 cardContainer.addEventListener('click', popapImage)
