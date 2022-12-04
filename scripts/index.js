@@ -1,48 +1,3 @@
-
-// Попап для редактирования профиля
-const popupProfile = document.querySelector('.popup_profile'); // Фон попап окна
-const openPopupProfile = document.querySelector('.profile__edit-button'); // Кнопкa для показа окна
-const closePopupProfile = document.querySelector('.popup__close-icon_profile'); // Кнопка для скрытия окна
-const formElementProfile = document.querySelector('.popup__form-edit')
-const nameInputProfile = document.querySelector('.popup__input_field_name')
-const jobInputProfile = document.querySelector('.popup__input_field_aboutme')
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
-
-
-const openPopupProf = function () {
-  popupProfile.classList.add('popup_opened');
-  nameInputProfile.value = profileTitle.textContent;
-  jobInputProfile.value = profileSubtitle.textContent;
-}
-
-const closePopupProf = function () {
-  popupProfile.classList.remove('popup_opened');
-}
-
-function formSubmitHandlerProfile (evt) {
-  evt.preventDefault();
-  profileTitle.textContent = nameInputProfile.value;
-  profileSubtitle.textContent = jobInputProfile.value;
-  closePopupProf();
-}
-
-openPopupProfile.addEventListener('click', openPopupProf);
-closePopupProfile.addEventListener('click', closePopupProf);
-formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
-
-
-// Попап для добалвения карточки
-const popupCard = document.querySelector('.popup_card'); // Фон попап окна
-const openPopupCard = document.querySelector('.profile__add-button'); // Кнопкa для показа окна
-const closePopupCard = document.querySelector('.popup__close-icon_card'); // Кнопка для скрытия окна
-const formElementCard = document.querySelector('.form-edit');
-const nameInputCard = document.querySelector('.popup__input_mesto-name');
-const linkInputCard = document.querySelector('.popup__input_picture');
-const cardTempalte = document.querySelector('#card-template').content.querySelector('.grid-places__item');
-const cardContainer = document.querySelector('.grid-places');
-const listenerImage = document.querySelector('.grid-places__item');
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -70,14 +25,55 @@ const initialCards = [
   }
 ];
 
+// Попап для редактирования профиля
+const popupProfile = document.querySelector('.popup_profile'); // Фон попап окна
+const PopupProfileOpenButton = document.querySelector('.profile__edit-button'); // Кнопкa для показа окна
+const PopupProfileCloseButton = document.querySelector('.popup__close-icon_profile'); // Кнопка для скрытия окна
+const formElementProfile = document.querySelector('.popup__form-edit')
+const nameInputProfile = document.querySelector('.popup__input_field_name')
+const jobInputProfile = document.querySelector('.popup__input_field_aboutme')
+const profileTitle = document.querySelector('.profile__title');
+const profileSubtitle = document.querySelector('.profile__subtitle');
 
-const openCardPopup = function () {
-  popupCard.classList.add('popup_opened');
+
+const openPopup = function (element) {
+  element.classList.add('popup_opened');
 }
 
-const closeCardPopup = function () {
-  popupCard.classList.remove('popup_opened');
+const closePopup = function (element) {
+  element.classList.remove('popup_opened');
 }
+
+function formSubmitHandlerProfile (evt) {
+  evt.preventDefault();
+  profileTitle.textContent = nameInputProfile.value;
+  profileSubtitle.textContent = jobInputProfile.value;
+  closePopup(popupProfile);
+}
+
+PopupProfileOpenButton.addEventListener('click', function() {
+  openPopup(popupProfile);
+  nameInputProfile.value = profileTitle.textContent;
+  jobInputProfile.value = profileSubtitle.textContent;
+});
+PopupProfileCloseButton.addEventListener('click', function() {
+  closePopup(popupProfile);
+});
+
+formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
+
+
+// Попап для добалвения карточки
+const popupCard = document.querySelector('.popup_card'); // Фон попап окна
+const PopupCardOpenButton = document.querySelector('.profile__add-button'); // Кнопкa для показа окна
+const PopupCardCloseButton = document.querySelector('.popup__close-icon_card'); // Кнопка для скрытия окна
+const formElementCard = document.querySelector('.form-edit');
+const nameInputCard = document.querySelector('.popup__input_mesto-name');
+const linkInputCard = document.querySelector('.popup__input_picture');
+const cardTempalte = document.querySelector('#card-template').content.querySelector('.grid-places__item');
+const cardContainer = document.querySelector('.grid-places');
+const listenerImage = document.querySelector('.grid-places__item');
+
 
 const handleChecklike = (event) => {
   event.stopImmediatePropagation();
@@ -114,15 +110,20 @@ const formSubmitHandlerCard = (evt) => {
   nameInputCard.value = '';
   linkInputCard.value = '';
 
-  closeCardPopup();
+  closePopup(popupCard);
 }
 
 const renderCard = (dataCard) => {
   cardContainer.prepend(generateCard(dataCard));
 };
 
-openPopupCard.addEventListener('click', openCardPopup);
-closePopupCard.addEventListener('click', closeCardPopup);
+PopupCardOpenButton.addEventListener('click', function() {
+  openPopup(popupCard);
+});
+PopupCardCloseButton.addEventListener('click', function() {
+  closePopup(popupCard);
+});
+
 formElementCard.addEventListener('submit', formSubmitHandlerCard);
 
 initialCards.forEach((dataCard) => {
@@ -133,24 +134,23 @@ initialCards.forEach((dataCard) => {
 
 // Попап с картинкой
 const popupPicture = document.querySelector('.popup_picture'); // Фон попап окна
-const closePopupPicture = document.querySelector('.popup__close-icon_picture'); // Кнопка для скрытия окна
+const PopupPictureCloseButton = document.querySelector('.popup__close-icon_picture'); // Кнопка для скрытия окна
+const figcptn = document.querySelector('.popup__figcptn');
+const picture = document.querySelector('.popup__image');
 
-const closePopapPicture = () => {
-  popupPicture.classList.remove('popup_opened');
-}
 
 const popapImage = (event) => {
-  const picture = document.querySelector('.popup__image');
   const pictureSrc = event.target.closest('.grid-places__image').getAttribute('src');
-  const figcptn = document.querySelector('.popup__figcptn');
   const textContentPicture = event.target.parentElement.querySelector('.grid-places__text').textContent;
   
   picture.setAttribute('src', pictureSrc);
   figcptn.textContent = textContentPicture;
 
-  popupPicture.classList.add('popup_opened');
+  openPopup(popupPicture);
 }
 
 
-closePopupPicture.addEventListener('click', closePopapPicture)
+PopupPictureCloseButton.addEventListener('click', function() {
+  closePopup(popupPicture)
+})
 cardContainer.addEventListener('click', popapImage)
