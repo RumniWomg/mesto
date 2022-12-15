@@ -29,7 +29,7 @@ const initialCards = [
 const popupProfile = document.querySelector('.popup_profile'); // Фон попап окна
 const PopupProfileOpenButton = document.querySelector('.profile__edit-button'); // Кнопкa для показа окна
 const PopupProfileCloseButton = document.querySelector('.popup__close-icon_profile'); // Кнопка для скрытия окна
-const formElementProfile = document.querySelector('.popup__form-edit')
+const formElementProfile = document.querySelector('.popup__form-profile')
 const nameInputProfile = document.querySelector('.popup__input_field_name')
 const jobInputProfile = document.querySelector('.popup__input_field_aboutme')
 const profileTitle = document.querySelector('.profile__title');
@@ -67,7 +67,7 @@ formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
 const popupCard = document.querySelector('.popup_card'); // Фон попап окна
 const PopupCardOpenButton = document.querySelector('.profile__add-button'); // Кнопкa для показа окна
 const PopupCardCloseButton = document.querySelector('.popup__close-icon_card'); // Кнопка для скрытия окна
-const formElementCard = document.querySelector('.form-edit');
+const formElementCard = document.querySelector('.popup__form-card');
 const nameInputCard = document.querySelector('.popup__input_mesto-name');
 const linkInputCard = document.querySelector('.popup__input_picture');
 const cardTempalte = document.querySelector('#card-template').content.querySelector('.grid-places__item');
