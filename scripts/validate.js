@@ -1,17 +1,20 @@
-//Здесь будет код валидации форм
+//Валидация форм
 
+//Функция определяет span с ошибкой и добавляет в него текст из validationMessage, а так же присваивает класс инпуту.
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add('popup__input_error');
   errorElement.textContent = errorMessage;
 };
 
+//Функция определяет span с ошибкой и добавляет в него текст из validationMessage, а так же присваивает класс инпуту.
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove('popup__input_error');
   errorElement.textContent = '';
 };
 
+//Проверка валидации в полях формы
 const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
@@ -19,11 +22,8 @@ const checkInputValidity = (formElement, inputElement) => {
     hideInputError(formElement, inputElement);
   }
 };
-//доделать
-const checkEnter = (e) => {
-  e.addEventListener()
-}
 
+//Находит все поля с инпутами и вешает на них слушатель. Запускает проверку валидации и переключатель кнопки.
 const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
   const buttonElement = formElement.querySelector('.popup__btn');
@@ -33,27 +33,31 @@ const setEventListeners = (formElement) => {
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement);
-//И тут
-      inputElement.addEventListener('submit', )
-      console.log()
 
       toggleButtonState(inputList, buttonElement);
     });
   });
 };
 
+//Проверка валидации, возвращает true или false
 const hasInvalidInput = (inputList) => {
+  console.log(inputList.some((inputElement) => !inputElement.validity.valid))
   return inputList.some((inputElement) => !inputElement.validity.valid);
 };
 
+//Переключатель кнопки из состояния disabled в active
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add('popup__btn_inactive');
+    buttonElement.setAttribute('disabled', 'disabled')
+
   } else {
     buttonElement.classList.remove('popup__btn_inactive');
+    buttonElement.removeAttribute('disabled', 'disabled');
   }
 };
 
+//Функция запуска валидации
 const enableValidation = () => {
   const formsList = Array.from(document.querySelectorAll('.form'));
 
@@ -65,7 +69,5 @@ const enableValidation = () => {
   });
   
 };
-
-
 
 enableValidation();
