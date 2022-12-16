@@ -1,18 +1,14 @@
-
 //Здесь будет код валидации форм
 
-
 const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add('popup__input_error');
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__input_active');
 };
 
 const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove('popup__input_error');
-  errorElement.classList.remove('popup__input_active');
   errorElement.textContent = '';
 };
 
@@ -22,8 +18,11 @@ const checkInputValidity = (formElement, inputElement) => {
   } else {
     hideInputError(formElement, inputElement);
   }
-  
 };
+//доделать
+const checkEnter = (e) => {
+  e.addEventListener()
+}
 
 const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
@@ -31,21 +30,20 @@ const setEventListeners = (formElement) => {
   
   toggleButtonState(inputList, buttonElement);
   
-  
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement);
-      console.log(formElement);
+//И тут
+      inputElement.addEventListener('submit', )
+      console.log()
+
       toggleButtonState(inputList, buttonElement);
     });
-    console.log(inputElement);
   });
 };
 
 const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-  return !inputElement.validity.valid;
-});
+  return inputList.some((inputElement) => !inputElement.validity.valid);
 };
 
 const toggleButtonState = (inputList, buttonElement) => {
@@ -64,14 +62,10 @@ const enableValidation = () => {
       evt.preventDefault();
     });
     setEventListeners(formElement);
-    
-    // const fieldsetList = Array.from(formElement.querySelectorAll('.form'));
-    //   fieldsetList.forEach((fieldSet) => {
-    //   setEventListeners(fieldSet);
-    // });
-    // console.log(formElement.querySelectorAll('.popup__input'))
   });
   
 };
 
- enableValidation();
+
+
+enableValidation();
