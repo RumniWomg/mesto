@@ -25,6 +25,11 @@ const initialCards = [
   }
 ];
 
+
+
+
+
+const popups = document.querySelectorAll('.popup');
 // Попап для редактирования профиля
 const popupProfile = document.querySelector('.popup_profile'); // Фон попап окна
 const PopupProfileOpenButton = document.querySelector('.profile__edit-button'); // Кнопкa для показа окна
@@ -36,12 +41,32 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
 
+
+popups.forEach((popup) => {  // закрытие попап кликом на крестик и оверлей
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup)
+    }
+    if (evt.target.classList.contains('popup__close-icon')) {
+      closePopup(popup)
+    }
+  })
+})
+
+const escapeClosePopup = (e) => {
+  if (e.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+}
+
 const openPopup = function (element) {
   element.classList.add('popup_opened');
+  document.addEventListener('keydown', escapeClosePopup);
 }
 
 const closePopup = function (element) {
   element.classList.remove('popup_opened');
+  document.removeEventListener('keydown', escapeClosePopup);
 }
 
 function formSubmitHandlerProfile (evt) {
