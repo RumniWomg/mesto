@@ -7,7 +7,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   errorElement.textContent = errorMessage;
 };
 
-//Функция определяет span с ошибкой и добавляет в него текст из validationMessage, а так же присваивает класс инпуту.
+//Функция определяет span с ошибкой и убирает из него текст с ошибкой, а так же удаляет класс инпута.
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove('popup__input_error');
@@ -41,7 +41,6 @@ const setEventListeners = (formElement) => {
 
 //Проверка валидации, возвращает true или false
 const hasInvalidInput = (inputList) => {
-  console.log(inputList.some((inputElement) => !inputElement.validity.valid))
   return inputList.some((inputElement) => !inputElement.validity.valid);
 };
 
@@ -49,7 +48,7 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add('popup__btn_inactive');
-    buttonElement.setAttribute('disabled', 'disabled')
+    buttonElement.setAttribute('disabled', 'disabled');
 
   } else {
     buttonElement.classList.remove('popup__btn_inactive');
