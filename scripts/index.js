@@ -1,7 +1,6 @@
 
 const popups = document.querySelectorAll('.popup');
 const error = Array.from(document.querySelectorAll('.popup__btn'));
-
 // Попап для редактирования профиля
 const popupProfile = document.querySelector('.popup_profile'); // Фон попап окна
 const buttonOpenEditProfilePopup = document.querySelector('.profile__edit-button'); // Кнопкa для показа окна
