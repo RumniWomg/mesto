@@ -71,14 +71,16 @@ const buttonClosePicturePopup = document.querySelector('.popup__close-icon_pictu
 const imageCaption = popupPicture.querySelector('.popup__image-caption');
 const picture = popupPicture.querySelector('.popup__image');
 
-const openImagePopup = (event) => {
-  const pictureSrc = event.target.closest('.grid-places__image').getAttribute('src');
-  const pictureAlt = event.target.closest('.grid-places__image').getAttribute('alt');
-  const textContentPicture = event.target.parentElement.querySelector('.grid-places__text').textContent;
+const openImagePopup = (newCard) => {
+  console.log(newCard)
+  console.log(newCard.textContent)
+  const pictureSrc = newCard.path[0].src;
+  
+  const pictureAlt = newCard.path[0].alt;
   
   picture.setAttribute('src', pictureSrc);
   picture.setAttribute('alt', pictureAlt);
-  imageCaption.textContent = textContentPicture;
+  imageCaption.textContent = pictureAlt;
 
   openPopup(popupPicture);
 }

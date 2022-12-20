@@ -57,10 +57,10 @@ const toggleButtonState = (inputList, buttonElement) => {
 };
 
 //Функция запуска валидации
-const enableValidation = () => {
+const enableValidation = (parameters) => {
   const formsList = Array.from(document.querySelectorAll('.form'));
 
-  formsList.forEach((formElement) => {
+  parameters.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
