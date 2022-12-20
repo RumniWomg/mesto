@@ -36,6 +36,19 @@ const escapeClosePopup = (e) => {
 }
 
 const openPopup = function (element) {
+  const form = element.querySelector('.form')
+  const spanError = Array.from(document.querySelectorAll('.popup__error'));
+  const inputError = Array.from(document.querySelectorAll('.popup__input'));
+
+  spanError.forEach((errorspan) => {
+    errorspan.textContent = '';
+  })
+
+  inputError.forEach((errorinput) => {
+    errorinput.classList.remove('popup__input_error')
+  });
+
+  form.reset()
   element.classList.add('popup_opened');
   document.addEventListener('keydown', escapeClosePopup);
   deleteSign(error)
@@ -71,10 +84,7 @@ const imageCaption = popupPicture.querySelector('.popup__image-caption');
 const picture = popupPicture.querySelector('.popup__image');
 
 const openImagePopup = (newCard) => {
-  console.log(newCard)
-  console.log(newCard.textContent)
   const pictureSrc = newCard.path[0].src;
-  
   const pictureAlt = newCard.path[0].alt;
   
   picture.setAttribute('src', pictureSrc);
