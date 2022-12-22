@@ -56,6 +56,13 @@ const toggleButtonState = (inputList, buttonElement, parameters) => {
   }
 };
 
+const disableSubmitButton = (element) => {
+  element.forEach((buttonElement) => {
+    buttonElement.setAttribute('disabled', 'disabled');
+    buttonElement.classList.add('popup__btn_inactive');
+  });
+};
+
 //Функция запуска валидации
 const enableValidation = (parameters) => {
   const formsList = Array.from(document.querySelectorAll(parameters.formSelector));
@@ -77,3 +84,22 @@ enableValidation({
   inputErrorClass: 'popup__btn_inactive',
   errorClass: 'popup__input_error'
 });
+
+//Очистка полей ввода и удаление признакка ошибки.
+const resetFormCondition = (element) => {
+  const form = element.querySelector('.form')
+  const spanError = Array.from(document.querySelectorAll('.popup__error'));
+  const inputError = Array.from(document.querySelectorAll('.popup__input'));
+
+  spanError.forEach((errorSpan) => {
+    errorSpan.textContent = '';
+  })
+
+  inputError.forEach((errorinput) => {
+    errorinput.classList.remove('popup__input_error')
+  });
+
+  form.reset()
+
+  disableSubmitButton(buttonsSubmit)
+}

@@ -1,6 +1,6 @@
 
 const popups = document.querySelectorAll('.popup');
-const error = Array.from(document.querySelectorAll('.popup__btn'));
+const buttonsSubmit = Array.from(document.querySelectorAll('.popup__btn'));
 // Попап для редактирования профиля
 const popupProfile = document.querySelector('.popup_profile'); // Фон попап окна
 const buttonOpenEditProfilePopup = document.querySelector('.profile__edit-button'); // Кнопкa для показа окна
@@ -10,13 +10,6 @@ const nameInputProfile = document.querySelector('.popup__input_field_name')
 const jobInputProfile = document.querySelector('.popup__input_field_aboutme')
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-
-const deleteSign = (element) => {
-  element.forEach((buttonElement) => {
-    buttonElement.setAttribute('disabled', 'disabled');
-    buttonElement.classList.add('popup__btn_inactive');
-  });
-};
 
 popups.forEach((popup) => {  // закрытие попап кликом на крестик и оверлей
   popup.addEventListener('mousedown', (evt) => {
@@ -35,23 +28,9 @@ const escapeClosePopup = (e) => {
   }
 }
 
-const openPopup = function (element) {
-  const form = element.querySelector('.form')
-  const spanError = Array.from(document.querySelectorAll('.popup__error'));
-  const inputError = Array.from(document.querySelectorAll('.popup__input'));
-
-  spanError.forEach((errorspan) => {
-    errorspan.textContent = '';
-  })
-
-  inputError.forEach((errorinput) => {
-    errorinput.classList.remove('popup__input_error')
-  });
-
-  form.reset()
+const openPopup = (element) => {
   element.classList.add('popup_opened');
-  document.addEventListener('keydown', escapeClosePopup);
-  deleteSign(error)
+  document.addEventListener('keydown', escapeClosePopup, resetFormCondition(element));
 }
 
 const closePopup = function (element) {
