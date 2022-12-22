@@ -57,10 +57,9 @@ const toggleButtonState = (inputList, buttonElement, parameters) => {
 };
 
 const disableSubmitButton = (element) => {
-  element.forEach((buttonElement) => {
-    buttonElement.setAttribute('disabled', 'disabled');
-    buttonElement.classList.add('popup__btn_inactive');
-  });
+  const buttonsSubmit = element.querySelector('.popup__btn')
+  buttonsSubmit.setAttribute('disabled', 'disabled');
+  buttonsSubmit.classList.add('popup__btn_inactive');
 };
 
 //Функция запуска валидации

@@ -1,6 +1,5 @@
 
 const popups = document.querySelectorAll('.popup');
-const buttonsSubmit = Array.from(document.querySelectorAll('.popup__btn'));
 // Попап для редактирования профиля
 const popupProfile = document.querySelector('.popup_profile'); // Фон попап окна
 const buttonOpenEditProfilePopup = document.querySelector('.profile__edit-button'); // Кнопкa для показа окна
@@ -30,7 +29,7 @@ const escapeClosePopup = (e) => {
 
 const openPopup = (element) => {
   element.classList.add('popup_opened');
-  document.addEventListener('keydown', escapeClosePopup, resetFormCondition(element));
+  document.addEventListener('keydown', escapeClosePopup);
 }
 
 const closePopup = function (element) {
@@ -47,6 +46,7 @@ function formSubmitHandlerProfile (evt) {
 
 buttonOpenEditProfilePopup.addEventListener('click', function() {
   openPopup(popupProfile);
+  disableSubmitButton(popupProfile);
   nameInputProfile.value = profileTitle.textContent;
   jobInputProfile.value = profileSubtitle.textContent;
 });
@@ -71,6 +71,7 @@ const openImagePopup = (newCard) => {
   imageCaption.textContent = pictureAlt;
 
   openPopup(popupPicture);
+  resetFormCondition(popupPicture);
 }
 
 buttonClosePicturePopup.addEventListener('click', function() {
@@ -134,6 +135,8 @@ const renderCard = (dataCard) => {
 
 buttonOpenAddCardPopup.addEventListener('click', function() {
   openPopup(popupCard);
+  resetFormCondition(popupCard);
+  disableSubmitButton(popupCard);
 });
 buttonCloseAddCardPopup.addEventListener('click', function() {
   closePopup(popupCard);
