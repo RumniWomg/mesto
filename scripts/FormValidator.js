@@ -1,21 +1,21 @@
 //Валидация форм
-
+export class FormValidator {
 //Функция определяет span с ошибкой и добавляет в него текст из validationMessage, а так же присваивает класс инпуту.
-const showInputError = (formElement, inputElement, errorMessage, parameters) => {
+showInputError = (formElement, inputElement, errorMessage, parameters) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(parameters.errorClass);
   errorElement.textContent = errorMessage;
 };
 
 //Функция определяет span с ошибкой и убирает из него текст с ошибкой, а так же удаляет класс инпута.
-const hideInputError = (formElement, inputElement, parameters) => {
+hideInputError = (formElement, inputElement, parameters) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove(parameters.errorClass);
   errorElement.textContent = '';
 };
 
 //Проверка валидации в полях формы
-const checkInputValidity = (formElement, inputElement, parameters) => {
+checkInputValidity = (formElement, inputElement, parameters) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, parameters);
   } else {
@@ -24,7 +24,7 @@ const checkInputValidity = (formElement, inputElement, parameters) => {
 };
 
 //Находит все поля с инпутами и вешает на них слушатель. Запускает проверку валидации и переключатель кнопки.
-const setEventListeners = (formElement, parameters) => {
+setEventListeners = (formElement, parameters) => {
   const inputList = Array.from(formElement.querySelectorAll(parameters.inputSelector));
   const buttonElement = formElement.querySelector(parameters.submitButtonSelector);
   
@@ -40,12 +40,12 @@ const setEventListeners = (formElement, parameters) => {
 };
 
 //Проверка валидации, возвращает true или false
-const hasInvalidInput = (inputList) => {
+hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => !inputElement.validity.valid);
 };
 
 //Переключатель кнопки из состояния disabled в active
-const toggleButtonState = (inputList, buttonElement, parameters) => {
+toggleButtonState = (inputList, buttonElement, parameters) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(parameters.inactiveButtonClass);
     buttonElement.setAttribute('disabled', 'disabled');
@@ -56,14 +56,14 @@ const toggleButtonState = (inputList, buttonElement, parameters) => {
   }
 };
 
-const disableSubmitButton = (element) => {
+disableSubmitButton = (element) => {
   const buttonsSubmit = element.querySelector('.popup__btn')
   buttonsSubmit.setAttribute('disabled', 'disabled');
   buttonsSubmit.classList.add('popup__btn_inactive');
 };
 
 //Функция запуска валидации
-const enableValidation = (parameters) => {
+enableValidation = (parameters) => {
   const formsList = Array.from(document.querySelectorAll(parameters.formSelector));
 
   formsList.forEach((formElement) => {
@@ -75,17 +75,8 @@ const enableValidation = (parameters) => {
   
 };
 
-enableValidation({
-  formSelector: '.form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__btn',
-  inactiveButtonClass: 'popup__btn_inactive',
-  inputErrorClass: 'popup__btn_inactive',
-  errorClass: 'popup__input_error'
-});
-
 //Очистка полей ввода и удаление признакка ошибки.
-const resetFormCondition = (element) => {
+resetFormCondition = (element) => {
   const form = element.querySelector('.form')
   const spanError = Array.from(document.querySelectorAll('.popup__error'));
   const inputError = Array.from(document.querySelectorAll('.popup__input'));
@@ -101,4 +92,5 @@ const resetFormCondition = (element) => {
   form.reset()
 
   disableSubmitButton(buttonsSubmit)
-}
+};
+};
