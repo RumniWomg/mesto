@@ -1,5 +1,5 @@
 import {openPopup} from "./index.js"
-import {cardTempalte, popupPicture, imageCaption} from "./constants.js"
+import {cardTempalte, popupPicture, imageCaption, picture} from "./constants.js"
 
 export class Card {
   constructor(data, templateSelector) {
@@ -30,13 +30,9 @@ export class Card {
   }
 
   _openImagePopup() {
-    const imagePopap = this._element.querySelector('.popup__image');
-    const pictureSrc = this._image;
-    const pictureAlt = this._alt;
-    
-    imagePopap.setAttribute('src', pictureSrc);
-    imagePopap.setAttribute('alt', pictureAlt);
-    imageCaption.textContent = pictureAlt;
+    imageCaption.textContent = this._title;
+    picture.src = this._image;
+    picture.alt = this._alt;
   
     openPopup(popupPicture);
   }

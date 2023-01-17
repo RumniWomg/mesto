@@ -2,7 +2,7 @@ import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import {initialCards, parameters, popups, popupProfile, buttonOpenEditProfilePopup, buttonCloseEditProfilePopup, 
   formElementProfile, nameInputProfile, jobInputProfile, profileTitle, profileSubtitle, buttonClosePicturePopup, 
-  imageCaption, picture, popupCard, buttonOpenAddCardPopup, buttonCloseAddCardPopup, formElementCard, cardContainer} from "./constants.js";
+  popupCard, buttonOpenAddCardPopup, buttonCloseAddCardPopup, formElementCard, cardContainer, nameInputCard, linkInputCard} from "./constants.js";
 
 
 function createNewCard(data) { // создаем новые карточки на основе класса
@@ -16,7 +16,36 @@ initialCards.forEach((item) => { //загрузка карточек на стр
   cardContainer.append(createNewCard(item));
 });
 
-// Попап для редактирования профиля
+const formAddValidator = new FormValidator(parameters, formElementCard); // создаем экземпляр класса FormValidator
+formAddValidator.enableValidation();
+
+const formEditValidator = new FormValidator(parameters, formElementProfile); // создаем экземпляр класса FormValidator
+formEditValidator.enableValidation();
+
+//Очистка полей ввода и удаление признакка ошибки.
+const resetFormCondition = (element) => {
+  const form = element.querySelector('.form')
+  const spanError = Array.from(document.querySelectorAll('.popup__error'));
+  const inputError = Array.from(document.querySelectorAll('.popup__input'));
+
+  spanError.forEach((errorSpan) => {
+    errorSpan.textContent = '';
+  })
+
+  inputError.forEach((errorinput) => {
+    errorinput.classList.remove('popup__input_error')
+  });
+
+  form.reset()
+
+  disableSubmitButton()
+};
+
+const disableSubmitButton = (element) => {
+  const buttonsSubmit = element.querySelector('.popup__btn')
+  buttonsSubmit.setAttribute('disabled', 'disabled');
+  buttonsSubmit.classList.add('popup__btn_inactive');
+};
 
 popups.forEach((popup) => {  // закрытие попап кликом на крестик и оверлей
   popup.addEventListener('mousedown', (evt) => {
@@ -64,9 +93,7 @@ buttonCloseEditProfilePopup.addEventListener('click', function() {
 
 formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
 
-// Попап с картинкой
-
-buttonClosePicturePopup.addEventListener('click', function() {
+buttonClosePicturePopup.addEventListener('click', function() {    // Кнопка закрытия попапа с картинкой
   closePopup(popupPicture)
 })
 

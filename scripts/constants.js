@@ -32,14 +32,13 @@ const initialCards = [
 ];
 
 const parameters = ({
-  formSelector: '.form',
+  //formSelector: '.form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__btn',
   inactiveButtonClass: 'popup__btn_inactive',
   inputErrorClass: 'popup__btn_inactive',
   errorClass: 'popup__input_error'
-}
-);
+});
 
 const popups = document.querySelectorAll('.popup');
 // Попап для редактирования профиля
