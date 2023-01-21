@@ -1,9 +1,8 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-import {initialCards, parameters, popups, popupProfile, buttonOpenEditProfilePopup, buttonCloseEditProfilePopup, 
-  formElementProfile, nameInputProfile, jobInputProfile, profileTitle, profileSubtitle, buttonClosePicturePopup, 
-  popupCard, buttonOpenAddCardPopup, buttonCloseAddCardPopup, formElementCard, cardContainer, nameInputCard, linkInputCard} from "./constants.js";
-
+import {initialCards, parameters, popups, popupProfile, buttonOpenEditProfilePopup, formElementProfile, nameInputProfile, 
+  jobInputProfile, profileTitle, profileSubtitle, popupCard, buttonOpenAddCardPopup, buttonCloseAddCardPopup, formElementCard, 
+  cardContainer, nameInputCard, linkInputCard} from "./constants.js";
 
 function createNewCard(data) { // создаем новые карточки на основе класса
   const card = new Card(data, '#card-template');
@@ -21,31 +20,6 @@ formAddValidator.enableValidation();
 
 const formEditValidator = new FormValidator(parameters, formElementProfile); // создаем экземпляр класса FormValidator
 formEditValidator.enableValidation();
-
-//Очистка полей ввода и удаление признакка ошибки.
-const resetFormCondition = (element) => {
-  const form = element.querySelector('.form')
-  const spanError = Array.from(document.querySelectorAll('.popup__error'));
-  const inputError = Array.from(document.querySelectorAll('.popup__input'));
-
-  spanError.forEach((errorSpan) => {
-    errorSpan.textContent = '';
-  })
-
-  inputError.forEach((errorinput) => {
-    errorinput.classList.remove('popup__input_error')
-  });
-
-  form.reset()
-
-  disableSubmitButton()
-};
-
-const disableSubmitButton = (element) => {
-  const buttonsSubmit = element.querySelector('.popup__btn')
-  buttonsSubmit.setAttribute('disabled', 'disabled');
-  buttonsSubmit.classList.add('popup__btn_inactive');
-};
 
 popups.forEach((popup) => {  // закрытие попап кликом на крестик и оверлей
   popup.addEventListener('mousedown', (evt) => {
@@ -74,7 +48,7 @@ export const closePopup = function (element) {
   document.removeEventListener('keydown', escapeClosePopup);
 }
 
-function formSubmitHandlerProfile (evt) {
+function handleProfileFormSubmit (evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInputProfile.value;
   profileSubtitle.textContent = jobInputProfile.value;
@@ -83,40 +57,32 @@ function formSubmitHandlerProfile (evt) {
 
 buttonOpenEditProfilePopup.addEventListener('click', function() {
   openPopup(popupProfile);
-  disableSubmitButton(popupProfile);
   nameInputProfile.value = profileTitle.textContent;
   jobInputProfile.value = profileSubtitle.textContent;
 });
-buttonCloseEditProfilePopup.addEventListener('click', function() {
-  closePopup(popupProfile);
-});
 
-formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
-
-buttonClosePicturePopup.addEventListener('click', function() {    // Кнопка закрытия попапа с картинкой
-  closePopup(popupPicture)
-})
+formElementProfile.addEventListener('submit', handleProfileFormSubmit);
 
 // Попап для добалвения карточки
 
-const formSubmitHandlerCard = (evt) => {
+const handleCardFormSubmit = (evt) => {
   evt.preventDefault();
   const newCardElements = { name: nameInputCard.value, link: linkInputCard.value };
   cardContainer.prepend(createNewCard(newCardElements));
 
-  formElementCard.reset();
+  //formElementCard.reset();
 
   closePopup(popupCard);
 }
 
-buttonOpenAddCardPopup.addEventListener('click', function() {
+buttonOpenAddCardPopup.addEventListener('click', () => {
   openPopup(popupCard);
-  resetFormCondition(popupCard);
-  disableSubmitButton(popupCard);
+  formAddValidator.resetFormCondition();
 });
-buttonCloseAddCardPopup.addEventListener('click', function() {
+
+buttonCloseAddCardPopup.addEventListener('click', () => {
   closePopup(popupCard);
   formElementCard.reset();
 });
 
-formElementCard.addEventListener('submit', formSubmitHandlerCard);
+formElementCard.addEventListener('submit', handleCardFormSubmit);

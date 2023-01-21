@@ -1,5 +1,5 @@
 import {openPopup} from "./index.js"
-import {cardTempalte, popupPicture, imageCaption, picture} from "./constants.js"
+import {popupPicture, imageCaption, picture} from "./constants.js"
 
 export class Card {
   constructor(data, templateSelector) {
@@ -8,21 +8,32 @@ export class Card {
     this._alt = data.alt;
     this._templateSelector = templateSelector;
   }
+
+  _getTemplate() {
+    const photoGridElement = document
+      .querySelector(this._templateSelector)
+      .content
+      .querySelector('.grid-places__item')
+      .cloneNode(true);
+
+    return photoGridElement;
+  }
   
   generateCard() {
-    this._element = cardTempalte.cloneNode(true);
-    this._setEventListener();
+    this._element = this._getTemplate();
     this._element.querySelector('.grid-places__text').textContent = this._title;
-  
-    const elementImage = this._element.querySelector('.grid-places__image');
-    elementImage.src = this._image;
-    elementImage.alt = this._alt;
-  
+    this._likeButton = this._element.querySelector('.grid-places__like');
+
+    this._cardImage = this._element.querySelector('.grid-places__image');
+    this._cardImage.src = this._image;
+    this._cardImage.alt = this._alt;
+    this._setEventListener();
+
     return this._element;
   }
 
   _handleChecklike() {
-    this._element.querySelector('.grid-places__like').classList.toggle('grid-places__like_active');
+    this._likeButton.classList.toggle('grid-places__like_active');
   }
   
   _handleDelete() {
@@ -38,7 +49,7 @@ export class Card {
   }
 
   _setEventListener() {
-    this._element.querySelector('.grid-places__like').addEventListener('click', () => {
+    this._likeButton.addEventListener('click', () => {
       this._handleChecklike();
     });
   
@@ -46,7 +57,7 @@ export class Card {
       this._handleDelete();
     });
 
-    this._element.querySelector('.grid-places__image').addEventListener('click', () => {
+    this._cardImage.addEventListener('click', () => {
       this._openImagePopup();
     });
   };
