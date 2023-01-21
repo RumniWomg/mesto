@@ -1,14 +1,12 @@
-import {openPopup} from "./index.js"
-import {popupPicture, imageCaption, picture} from "./constants.js"
-
 export class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleCardClick) {
     this._title = data.name;
     this._image = data.link;
     this._alt = data.alt;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
-
+  
   _getTemplate() {
     const photoGridElement = document
       .querySelector(this._templateSelector)
@@ -28,7 +26,6 @@ export class Card {
     this._cardImage.src = this._image;
     this._cardImage.alt = this._alt;
     this._setEventListener();
-
     return this._element;
   }
 
@@ -38,14 +35,6 @@ export class Card {
   
   _handleDelete() {
     this._element.remove();
-  }
-
-  _openImagePopup() {
-    imageCaption.textContent = this._title;
-    picture.src = this._image;
-    picture.alt = this._alt;
-  
-    openPopup(popupPicture);
   }
 
   _setEventListener() {
@@ -58,7 +47,7 @@ export class Card {
     });
 
     this._cardImage.addEventListener('click', () => {
-      this._openImagePopup();
+      this._handleCardClick(this._alt, this._image);
     });
-  };
+  }
 }

@@ -2,13 +2,21 @@ import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import {initialCards, parameters, popups, popupProfile, buttonOpenEditProfilePopup, formElementProfile, nameInputProfile, 
   jobInputProfile, profileTitle, profileSubtitle, popupCard, buttonOpenAddCardPopup, buttonCloseAddCardPopup, formElementCard, 
-  cardContainer, nameInputCard, linkInputCard} from "./constants.js";
+  cardContainer, nameInputCard, linkInputCard, imageCaption, picture, popupPicture} from "./constants.js";
 
 function createNewCard(data) { // создаем новые карточки на основе класса
-  const card = new Card(data, '#card-template');
+  const card = new Card(data, '#card-template', handleCardClick);
   const cardContainerElement = card.generateCard();
 
   return cardContainerElement;
+}
+
+function handleCardClick (name, link) {
+  imageCaption.textContent = name;
+  picture.src = link;
+  picture.alt = name;
+  
+  openPopup(popupPicture);
 }
 
 initialCards.forEach((item) => { //загрузка карточек на страницу
@@ -63,14 +71,10 @@ buttonOpenEditProfilePopup.addEventListener('click', function() {
 
 formElementProfile.addEventListener('submit', handleProfileFormSubmit);
 
-// Попап для добалвения карточки
-
 const handleCardFormSubmit = (evt) => {
   evt.preventDefault();
   const newCardElements = { name: nameInputCard.value, link: linkInputCard.value };
   cardContainer.prepend(createNewCard(newCardElements));
-
-  //formElementCard.reset();
 
   closePopup(popupCard);
 }
@@ -82,7 +86,6 @@ buttonOpenAddCardPopup.addEventListener('click', () => {
 
 buttonCloseAddCardPopup.addEventListener('click', () => {
   closePopup(popupCard);
-  formElementCard.reset();
 });
 
 formElementCard.addEventListener('submit', handleCardFormSubmit);

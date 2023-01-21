@@ -16,12 +16,8 @@ export class FormValidator {
     this._buttonElement = formElement.querySelector(this._submitButtonSelector);
   }
   
-  //Очистка полей ввода и удаление признакка ошибки.
-
+  //Очистка полей ввода, удаление признакка ошибки и блокировка кнопки
   resetFormCondition () {
-    console.log(this._inputList);
-    console.log(this._errorList);
-    console.log(this._inputSelector);
     this._errorList.forEach((errorSpan) => {
       errorSpan.textContent = '';
     });

@@ -38,7 +38,6 @@ const parameters = ({
   inactiveButtonClass: 'popup__btn_inactive',
   inputErrorClass: '.popup__error',
   errorClass: 'popup__input_error',
-  //spanError: 'popup__error'
 });
 
 const popups = document.querySelectorAll('.popup');
