@@ -80,12 +80,9 @@ const handleCardFormSubmit = (evt) => {
 }
 
 buttonOpenAddCardPopup.addEventListener('click', () => {
+  formElementCard.reset();
   openPopup(popupCard);
   formAddValidator.resetFormCondition();
-});
-
-buttonCloseAddCardPopup.addEventListener('click', () => {
-  closePopup(popupCard);
 });
 
 formElementCard.addEventListener('submit', handleCardFormSubmit);

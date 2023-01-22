@@ -26,7 +26,6 @@ export class FormValidator {
       errorinput.classList.remove('popup__input_error')
     });
   
-    this._formElement.reset();
     this._disableSubmitButton();
   };
 
