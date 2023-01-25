@@ -1,7 +1,9 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
+import { Section } from "./Section.js";
+import { Popup } from "./Popup.js";
 import {initialCards, parameters, popups, popupProfile, buttonOpenEditProfilePopup, formElementProfile, nameInputProfile, 
-  jobInputProfile, profileTitle, profileSubtitle, popupCard, buttonOpenAddCardPopup, buttonCloseAddCardPopup, formElementCard, 
+  jobInputProfile, profileTitle, profileSubtitle, popupCard, buttonOpenAddCardPopup, formElementCard, 
   cardContainer, nameInputCard, linkInputCard, imageCaption, picture, popupPicture} from "./constants.js";
 
 function createNewCard(data) { // создаем новые карточки на основе класса
