@@ -32,7 +32,6 @@ const initialCards = [
 ];
 
 const parameters = ({
-  //formSelector: '.form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__btn',
   inactiveButtonClass: 'popup__btn_inactive',
