@@ -6,23 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="dicription" content="Сборник интересных мест Мира">
   <link type="image/png" sizes="32x32" rel="icon" href="./images/favicon.ico">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Места Мира</title>
 </head>
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/Logo.svg" alt="Логотип">
+    <img class="header__logo" src="<%=require('./images/Logo.svg')%>" alt="Логотип">
   </header>
   <main class="content">
     <section class="profile">
       <div class="profile__author">
-        <img class="profile__photo" src="./images/imageJack.png" alt="Аватар">
+        <img class="profile__photo" src="<%=require('./images/imageJack.png')%>" alt="Аватар">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
         <p class="profile__subtitle">Исследователь океана</p>
         <button class="profile__edit-button" type="button" aria-label="редактировать"></button>
       </div>
       <button class="profile__add-button" type="button" aria-label="добавить">
-        <img class="profile__add-button-crest" src="./images/крест.svg" alt="Кнопка добавить">
+        <img class="profile__add-button-crest" src="<%=require('./images/крест.svg')%>" alt="Кнопка добавить">
       </button>
     </section>
     <section class="places-list">

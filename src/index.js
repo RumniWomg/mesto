@@ -1,12 +1,12 @@
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
-import { Section } from "./Section.js";
-import { PopupWithForm } from "./PopupWithForm.js";
-import { PopupWithImage } from "./PopupWithImage.js";
-import { UserInfo } from "./UserInfo.js";
+import './pages/index.css';
+import { Card } from "./components/Card.js";
+import { FormValidator } from "./components/FormValidator.js";
+import { Section } from "./components/Section.js";
+import { PopupWithForm } from "./components/PopupWithForm.js";
+import { PopupWithImage } from "./components/PopupWithImage.js";
+import { UserInfo } from "./components/UserInfo.js";
 import {initialCards, parameters, buttonOpenEditProfilePopup, formElementProfile, nameInputProfile, 
-  jobInputProfile, profileTitle, profileSubtitle, buttonOpenAddCardPopup, formElementCard, 
-  cardContainer, nameInputCard, linkInputCard, imageCaption, picture} from "./constants.js";
+  jobInputProfile, profileTitle, profileSubtitle, buttonOpenAddCardPopup, formElementCard, cardContainer} from "./components/constants.js";
 
 const profileInfo = new UserInfo({ // создаем экземпляр новых данных пользователя
   userNameInfo: profileTitle,
