@@ -2,7 +2,6 @@ export class Card {
   constructor(data, templateSelector, handleCardClick) {
     this._title = data.name;
     this._image = data.link;
-    this._alt = data.alt;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -24,7 +23,7 @@ export class Card {
 
     this._cardImage = this._element.querySelector('.grid-places__image');
     this._cardImage.src = this._image;
-    this._cardImage.alt = this._alt;
+    this._cardImage.alt = this._title;
     this._setEventListener();
     return this._element;
   }
@@ -47,7 +46,7 @@ export class Card {
     });
 
     this._cardImage.addEventListener('click', () => {
-      this._handleCardClick(this._alt, this._image);
+      this._handleCardClick(this._title, this._image);
     });
   }
 }

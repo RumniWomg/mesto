@@ -1,12 +1,12 @@
-import './pages/index.css';
-import { Card } from "./components/Card.js";
-import { FormValidator } from "./components/FormValidator.js";
-import { Section } from "./components/Section.js";
-import { PopupWithForm } from "./components/PopupWithForm.js";
-import { PopupWithImage } from "./components/PopupWithImage.js";
-import { UserInfo } from "./components/UserInfo.js";
-import {initialCards, parameters, buttonOpenEditProfilePopup, formElementProfile, nameInputProfile, 
-  jobInputProfile, profileTitle, profileSubtitle, buttonOpenAddCardPopup, formElementCard, cardContainer} from "./components/constants.js";
+import './index.css';
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Section } from "../components/Section.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { UserInfo } from "../components/UserInfo.js";
+import {initialCards, validatorParameters, buttonOpenEditProfilePopup, formElementProfile, nameInputProfile, 
+  jobInputProfile, profileTitle, profileSubtitle, buttonOpenAddCardPopup, formElementCard, cardContainer} from "../utils/constants.js";
 
 const profileInfo = new UserInfo({ // создаем экземпляр новых данных пользователя
   userNameInfo: profileTitle,
@@ -24,10 +24,10 @@ function createNewCard(data) { // создаем новые карточки н�
   return cardContainerElement;
 }
 
-const formAddValidator = new FormValidator(parameters, formElementCard); // создаем экземпляр класса FormValidator
+const formAddValidator = new FormValidator(validatorParameters, formElementCard); // создаем экземпляр класса FormValidator
 formAddValidator.enableValidation();
 
-const formEditValidator = new FormValidator(parameters, formElementProfile); // создаем экземпляр класса FormValidator
+const formEditValidator = new FormValidator(validatorParameters, formElementProfile); // создаем экземпляр класса FormValidator
 formEditValidator.enableValidation();
 
 const popupProfile = new PopupWithForm('.popup_profile', handleProfileFormSubmit); // создаем экземпляр попап редактирования
@@ -54,12 +54,12 @@ buttonOpenAddCardPopup.addEventListener('click', () => {
   formAddValidator.resetFormCondition();
 });
 
-const handleCardFormSubmit = (inputValue) => {
-  const newCardElements = { 
-    name: inputValue['mesto-name'], 
-    link: inputValue['link-picture'] 
+const handleCardFormSubmit = (inputValues) => {
+  const newCardData = { 
+    name: inputValues['mesto-name'], 
+    link: inputValues['link-picture']
   };
-  cardContainer.prepend(createNewCard(newCardElements));
+  cardContainer.prepend(createNewCard(newCardData));
 
   popupCard.close();
 }
@@ -67,12 +67,12 @@ const handleCardFormSubmit = (inputValue) => {
 const popupCard = new PopupWithForm('.popup_card', handleCardFormSubmit); // создаем экземпляр попап добавления картинки
 popupCard.setEventListeners();
 
-const initialCardsList = new Section({  //загрузка карточек на страницу
+const CardsList = new Section({  //загрузка карточек на страницу
   items: initialCards,
   renderer: (data) => {
-    initialCardsList.addItem(createNewCard(data));
+    CardsList.addItem(createNewCard(data));
   },
 },
   cardContainer
 );
-initialCardsList.renderItems();
+CardsList.renderItems();

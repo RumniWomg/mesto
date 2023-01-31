@@ -26,12 +26,7 @@ export class FormValidator {
       errorinput.classList.remove('popup__input_error')
     });
   
-    this._disableSubmitButton();
-  };
-
-  _disableSubmitButton () {
-    this._buttonElement.disabled = "disabled";
-    this._buttonElement.classList.add('popup__btn_inactive');
+    this._toggleButtonState();
   };
 
   //Функция определяет span с ошибкой и добавляет в него текст из validationMessage, а так же присваивает класс инпуту.
@@ -92,9 +87,6 @@ export class FormValidator {
 
   //Функция запуска валидации
   enableValidation() {
-    this._formElement.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-    });
     this._setEventListeners();
   }
 }

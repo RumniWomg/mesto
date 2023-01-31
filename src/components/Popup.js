@@ -12,7 +12,7 @@ export default class Popup {
     this._popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', this._handleEscClose);
   }
-  // спросить потом почему метод срабатывает только когда выполнен стрелочный вариант?
+  
   _handleEscClose = (e) => {
     if (e.key === 'Escape') {
       this.close();
