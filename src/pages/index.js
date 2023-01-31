@@ -6,11 +6,11 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { UserInfo } from "../components/UserInfo.js";
 import {initialCards, validatorParameters, buttonOpenEditProfilePopup, formElementProfile, nameInputProfile, 
-  jobInputProfile, profileTitle, profileSubtitle, buttonOpenAddCardPopup, formElementCard, cardContainer} from "../utils/constants.js";
+  jobInputProfile, buttonOpenAddCardPopup, formElementCard, cardContainer} from "../utils/constants.js";
 
 const profileInfo = new UserInfo({ // создаем экземпляр новых данных пользователя
-  userNameInfo: profileTitle,
-  aboutMeInfo: profileSubtitle
+  userNameInfo: '.profile__title',
+  aboutMeInfo: '.profile__subtitle',
 });
 
 function handleProfileFormSubmit (object) { // обрабатываем форму редактировая профиля
@@ -49,17 +49,26 @@ buttonOpenEditProfilePopup.addEventListener('click', () => { // открывае
 });
 
 buttonOpenAddCardPopup.addEventListener('click', () => {
-  formElementCard.reset();
   popupCard.open();
   formAddValidator.resetFormCondition();
 });
 
 const handleCardFormSubmit = (inputValues) => {
-  const newCardData = { 
+  const newCardData = [{ 
     name: inputValues['mesto-name'], 
     link: inputValues['link-picture']
-  };
-  cardContainer.prepend(createNewCard(newCardData));
+  }];
+
+  const NewCard = new Section({
+    items: newCardData,
+    renderer: (data) => {
+      NewCard.addItem(createNewCard(data));
+    },
+  },
+  '.grid-places'
+  );
+
+  NewCard.renderItems();
 
   popupCard.close();
 }
@@ -68,11 +77,11 @@ const popupCard = new PopupWithForm('.popup_card', handleCardFormSubmit); // с�
 popupCard.setEventListeners();
 
 const CardsList = new Section({  //загрузка карточек на страницу
-  items: initialCards,
-  renderer: (data) => {
-    CardsList.addItem(createNewCard(data));
+    items: initialCards.reverse(),
+    renderer: (data) => {
+      CardsList.addItem(createNewCard(data));
+    },
   },
-},
-  cardContainer
+  '.grid-places'
 );
 CardsList.renderItems();

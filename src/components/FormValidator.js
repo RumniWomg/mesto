@@ -21,9 +21,13 @@ export class FormValidator {
     this._errorList.forEach((errorSpan) => {
       errorSpan.textContent = '';
     });
+
+    this._inputList.forEach((errorField) => {
+      errorField.value = '';
+    });
   
-    this._inputList.forEach((errorinput) => {
-      errorinput.classList.remove('popup__input_error')
+    this._inputList.forEach((errorInput) => {
+      errorInput.classList.remove('popup__input_error')
     });
   
     this._toggleButtonState();

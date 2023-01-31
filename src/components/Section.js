@@ -3,14 +3,14 @@ export class Section {
     this._renderedItems = items;
     this._renderer = renderer;
     
-    this._container = selector;
+    this._container = document.querySelector(selector);
   }
 
   renderItems() {
-    this._renderedItems.forEach(item => this._renderer(item))
+    this._renderedItems.forEach(this._renderer)
   }
 
   addItem(element) {
-    this._container.append(element);
+    this._container.prepend(element);
   }
 }

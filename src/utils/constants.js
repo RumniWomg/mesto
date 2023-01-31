@@ -35,15 +35,13 @@ const validatorParameters = ({
 
 // Попап для редактирования профиля
 const buttonOpenEditProfilePopup = document.querySelector('.profile__edit-button'); // Кнопкa для показа окна
-const formElementProfile = document.querySelector('.popup__form-profile')
-const nameInputProfile = document.querySelector('.popup__input_field_name')
-const jobInputProfile = document.querySelector('.popup__input_field_aboutme')
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
+const formElementProfile = document.querySelector('.popup__form-profile');
+const nameInputProfile = document.querySelector('.popup__input_field_name');
+const jobInputProfile = document.querySelector('.popup__input_field_aboutme');
 // Попап для добалвения карточки
 const buttonOpenAddCardPopup = document.querySelector('.profile__add-button'); // Кнопкa для показа окна
 const formElementCard = document.querySelector('.popup__form-card');
 const cardContainer = document.querySelector('.grid-places');
 
 export {initialCards, validatorParameters, buttonOpenEditProfilePopup, formElementProfile, nameInputProfile, 
-  jobInputProfile, profileTitle, profileSubtitle, buttonOpenAddCardPopup, formElementCard, cardContainer}
+  jobInputProfile, buttonOpenAddCardPopup, formElementCard, cardContainer}
