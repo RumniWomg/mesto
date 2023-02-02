@@ -60,16 +60,16 @@ const handleCardFormSubmit = (inputValues) => {
     link: inputValues['link-picture']
   }];
 
-  const NewCard = new Section({
+  const newCard = new Section({
     items: newCardData,
     renderer: (data) => {
-      NewCard.addItem(createNewCard(data));
+      newCard.addItem(createNewCard(data));
     },
   },
   '.grid-places'
   );
 
-  NewCard.renderItems();
+  newCard.renderItems();
 
   // cardContainer.prepend(createNewCard(newCardData));
 
@@ -79,12 +79,12 @@ const handleCardFormSubmit = (inputValues) => {
 const popupCard = new PopupWithForm('.popup_card', handleCardFormSubmit); // создаем экземпляр попап добавления картинки
 popupCard.setEventListeners();
 
-const CardsList = new Section({  //загрузка карточек на страницу
+const cardsList = new Section({  //загрузка карточек на страницу
     items: initialCards.reverse(),
     renderer: (data) => {
-      CardsList.addItem(createNewCard(data));
+      cardsList.addItem(createNewCard(data));
     },
   },
   '.grid-places'
 );
-CardsList.renderItems();
+cardsList.renderItems();
