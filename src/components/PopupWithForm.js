@@ -10,7 +10,7 @@ export class PopupWithForm extends Popup {
 
   close() {
     this._form.reset();
-    // this._inputList.forEach((errorField) => { // А зачем нам это делать? Ведь мы уже очищаем поля ввода в классе FormValidator. Кстати благодарю за разъеснение про контекст this)
+    // this._inputList.forEach((errorField) => { 
     //   errorField.value = '';
     // });
     super.close();
