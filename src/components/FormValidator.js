@@ -22,12 +22,12 @@ export class FormValidator {
       errorSpan.textContent = '';
     });
 
-    this._inputList.forEach((errorField) => {
-      errorField.value = '';
-    });
+    // this._inputList.forEach((errorField) => {
+    //   errorField.value = '';
+    // });
   
     this._inputList.forEach((errorInput) => {
-      errorInput.classList.remove('popup__input_error')
+      errorInput.classList.remove(this._errorClass)
     });
   
     this._toggleButtonState();
