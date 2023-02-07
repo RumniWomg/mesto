@@ -1,0 +1,7 @@
+.grid-places__likes {
+  display: flex;
+  flex-direction: column;
+  width: 64px;
+  margin: 0;
+  align-self: center;
+}

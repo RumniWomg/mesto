@@ -1,0 +1,20 @@
+.popup__avatar-container {
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+  background: #fff;
+  width: 430px;
+  height: 272px;
+  padding: 50px;
+  transition: 0.5s all;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .popup__avatar-container {
+    width: 282px;
+    padding: 25px 22px;
+  }
+}

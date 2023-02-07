@@ -1,9 +1,10 @@
 export class Card {
-  constructor(data, templateSelector, handleCardClick) {
+  constructor(data, templateSelector, handleCardClick, handleTrashClick) {
     this._title = data.name;
     this._image = data.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._handleTrashClick = handleTrashClick;
   }
   
   _getTemplate() {
@@ -42,7 +43,8 @@ export class Card {
     });
   
     this._element.querySelector('.grid-places__trash').addEventListener('click', () => {
-      this._handleDelete();
+      // this._handleDelete();
+      this._handleTrashClick();
     });
 
     this._cardImage.addEventListener('click', () => {

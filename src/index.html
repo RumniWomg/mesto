@@ -15,9 +15,10 @@
   <main class="content">
     <section class="profile">
       <div class="profile__author">
+        <img class="profile__pencil" src="<%=require('./images/pencil.svg')%>" alt="Карандаш">
         <img class="profile__photo" src="<%=require('./images/imageJack.png')%>" alt="Аватар">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <p class="profile__subtitle">Исследователь океана</p>
+        <h1 class="profile__title"></h1>
+        <p class="profile__subtitle"></p>
         <button class="profile__edit-button" type="button" aria-label="редактировать"></button>
       </div>
       <button class="profile__add-button" type="button" aria-label="добавить">
@@ -49,6 +50,19 @@
       </form>
     </div>
   </div>
+  <!--Попап редактирования аватара-->
+  <div class="popup popup_avatar-edit">
+    <div class="popup__avatar-container">
+      <h2 class="popup__heading">Обновить аватар</h2>
+      <button class="popup__close-icon popup__close-icon_card" type="button" aria-label="закрыть"></button>
+      <form class="form popup__form-avatar" name="form-avatar" novalidate>
+        <input class="popup__input popup__input_link-avatar" type="url" name="link-avatar" 
+        id="link-avatar" placeholder="Ссылка на картинку" required>
+        <span id="link-avatar-error" class="popup__error"></span>
+        <button class="popup__btn" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
   <!--Попап добавления карточки-->
   <div class="popup popup_card">
     <div class="popup__container">
@@ -62,6 +76,16 @@
         id="link-picture" placeholder="Ссылка на картинку" required>
         <span id="link-picture-error" class="popup__error"></span>
         <button class="popup__btn" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <!--Попап удаления карточки-->
+  <div class="popup popup_card-delite">
+    <div class="popup__deleter-container">
+      <form class="form popup__form-card" name="card-delete" id="card-delete" novalidate>
+        <h2 class="popup__heading-deleter">Вы уверены?</h2>
+        <button class="popup__close-icon popup__close-icon_card" type="button" aria-label="удалить"></button>
+        <button class="popup__btn" type="submit">Да</button>
       </form>
     </div>
   </div>
@@ -80,7 +104,10 @@
       <img class="grid-places__image" src="#" alt="Изображение места">
       <div class="grid-places__info-block">
         <h2 class="grid-places__text"></h2>
-        <button class="grid-places__like" type="button" aria-label="нравится"></button>
+        <div class="grid-places__likes">
+          <button class="grid-places__like" type="button" aria-label="нравится"></button>
+          <span class="grid-places__counter">0</span>
+        </div>
       </div>
     </li>
   </template>

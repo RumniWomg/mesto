@@ -1,0 +1,10 @@
+.profile__pencil {
+  display: flex;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  left: 47px;
+  top: 47px;
+  z-index: 1;
+  pointer-events: none;
+}

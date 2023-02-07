@@ -42,6 +42,8 @@ const jobInputProfile = document.querySelector('.popup__input_field_aboutme');
 const buttonOpenAddCardPopup = document.querySelector('.profile__add-button'); // Кнопкa для показа окна
 const formElementCard = document.querySelector('.popup__form-card');
 const cardContainer = document.querySelector('.grid-places');
+const buttonOpenAvatarEdit = document.querySelector('.profile__photo');
+const formAvatar = document.querySelector('.popup__form-avatar');
 
 export {initialCards, validatorParameters, buttonOpenEditProfilePopup, formElementProfile, nameInputProfile, 
-  jobInputProfile, buttonOpenAddCardPopup, formElementCard, cardContainer}
+  jobInputProfile, buttonOpenAddCardPopup, formElementCard, cardContainer, buttonOpenAvatarEdit, formAvatar}
