@@ -91,8 +91,8 @@ class Api {
     return fetch(this._baseUrl + '/cards', {
       method: 'POST',
       body: JSON.stringify({
-        name: data.place,
-        link: data.src
+        name: data.name,
+        link: data.link,
       }),
       headers: {
         authorization: this._headers,

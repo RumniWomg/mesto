@@ -26,7 +26,7 @@
 @import url(../blocks/grid-places/__like/_active/grid-places__like_active.css);
 @import url(../blocks/grid-places/__trash/grid-places__trash.css);
 @import url(../blocks/grid-places/__likes/grid-places__likes.css);
-@import url(../blocks/grid-places/__counter/grid-places__counter.css);
+@import url(../blocks/grid-places/__like-counter/grid-places__like-counter.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__btn/popup__btn.css);

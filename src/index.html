@@ -16,7 +16,7 @@
     <section class="profile">
       <div class="profile__author">
         <img class="profile__pencil" src="<%=require('./images/pencil.svg')%>" alt="Карандаш">
-        <img class="profile__photo" src="<%=require('./images/imageJack.png')%>" alt="Аватар">
+        <img class="profile__photo" src="" alt="Аватар">
         <h1 class="profile__title"></h1>
         <p class="profile__subtitle"></p>
         <button class="profile__edit-button" type="button" aria-label="редактировать"></button>
@@ -56,7 +56,7 @@
       <h2 class="popup__heading">Обновить аватар</h2>
       <button class="popup__close-icon popup__close-icon_card" type="button" aria-label="закрыть"></button>
       <form class="form popup__form-avatar" name="form-avatar" novalidate>
-        <input class="popup__input popup__input_link-avatar" type="url" name="link-avatar" 
+        <input class="popup__input popup__input_link-avatar" type="url" name="avatar" 
         id="link-avatar" placeholder="Ссылка на картинку" required>
         <span id="link-avatar-error" class="popup__error"></span>
         <button class="popup__btn" type="submit">Сохранить</button>
@@ -69,10 +69,10 @@
       <h2 class="popup__heading">Новое место</h2>
       <button class="popup__close-icon popup__close-icon_card" type="button" aria-label="закрыть"></button>
       <form class="form popup__form-card" name="card-edit" novalidate>
-        <input class="popup__input popup__input_mesto-name" type="text" name="mesto-name" 
+        <input class="popup__input popup__input_mesto-name" type="text" name="name" 
         id="mesto-name" placeholder="Название места" minlength="2" maxlength="30" required>
         <span id="mesto-name-error" class="popup__error"></span>
-        <input class="popup__input popup__input_picture" type="url" name="link-picture" 
+        <input class="popup__input popup__input_picture" type="url" name="link" 
         id="link-picture" placeholder="Ссылка на картинку" required>
         <span id="link-picture-error" class="popup__error"></span>
         <button class="popup__btn" type="submit">Сохранить</button>
