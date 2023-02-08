@@ -38,6 +38,7 @@
 
 @media screen and (max-width: 590px) {
   .profile__author {
+    position: relative;
     margin: 0;
     align-self: center;
     grid-template-columns: 1fr max-content;

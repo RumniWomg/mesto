@@ -8,3 +8,9 @@
   z-index: 1;
   pointer-events: none;
 }
+
+@media screen and (max-width: 590px) {
+  .profile__pencil {
+    left: 100px;
+  }
+}
