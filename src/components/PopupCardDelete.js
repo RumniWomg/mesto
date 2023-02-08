@@ -11,8 +11,6 @@ export class PopupCardDeleter extends Popup {
     super.open();
   }
 
-  
-
   setEventListeners() {
     super.setEventListeners();
 
