@@ -26,10 +26,12 @@ export class Card {
   
   generateCard() {
     this._element = this._getTemplate();
-    this._element.querySelector('.grid-places__text').textContent = this._title;
-    this._element.querySelector('.grid-places__counter').textContent = `${this._likes.length}`;
     this._likeButton = this._element.querySelector('.grid-places__like');
     this._cardImage = this._element.querySelector('.grid-places__image');
+    this._trashBtn = this._element.querySelector('.grid-places__trash');
+    this._counter = this._element.querySelector('.grid-places__counter');
+    this._element.querySelector('.grid-places__text').textContent = this._title;
+    this._counter.textContent = `${this._likes.length}`;
     this._cardImage.src = this._image;
     this._cardImage.alt = this._title;
     this._setEventListener();
@@ -51,15 +53,15 @@ export class Card {
   }
 
   likeCount(res) {
-    this._element.querySelector('.grid-places__counter').textContent = `${res.likes.length}`;
+    this._counter.textContent = `${res.likes.length}`;
   }
 
   putLike() {
-    this._element.querySelector('.grid-places__like').classList.add('grid-places__like_active')
+    this._likeButton.classList.add('grid-places__like_active')
   }
 
   deleteLike() {
-    this._element.querySelector('.grid-places__like').classList.remove('grid-places__like_active')
+    this._likeButton.classList.remove('grid-places__like_active')
   }
   
   deleteCard = () => {
@@ -69,20 +71,20 @@ export class Card {
 
   _removeTrashBtn() {
     if (this._ownerId !== this._userId) {
-      this._element.querySelector('.grid-places__trash').remove()
+      this._trashBtn.remove()
     }
   }
 
   _setEventListener() {
     this._likeButton.addEventListener('click', () => {
-      if (this._element.querySelector('.grid-places__like').classList.contains('grid-places__like_active')) {
+      if (this._likeButton.classList.contains('grid-places__like_active')) {
         this._handleDeleteLike()
       } else {
         this._handleLikeButtonClick()
       }
     });
   
-    this._element.querySelector('.grid-places__trash').addEventListener('click', () => {
+    this._trashBtn.addEventListener('click', () => {
       this._handleTrashClick();
     });
 

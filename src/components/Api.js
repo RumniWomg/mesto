@@ -1,13 +1,14 @@
-
 // Токен: e15929fa-973c-4224-8a02-043832be46fc
 // Идентификатор группы: cohort-59"
-
-
 
 class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers.authorization;
+  }
+
+  _checkResponse(res) {
+    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
   }
 
   getInitialCards = () => {
@@ -16,7 +17,7 @@ class Api {
         authorization: this._headers,
       }
     })
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .then(this._checkResponse)
   }
 
   getUsersData = () => {
@@ -25,7 +26,7 @@ class Api {
         authorization: this._headers,
       }
     })
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .then(this._checkResponse)
   }
 
   setUsersData = (data) => {
@@ -40,7 +41,7 @@ class Api {
         'Content-Type': 'application/json'
       }
     })
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .then(this._checkResponse)
   }
 
   deleteCards = (_id) => {
@@ -50,7 +51,7 @@ class Api {
         authorization: this._headers,
       }
     })
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .then(this._checkResponse)
   }
 
   setAvatar = (data) => {
@@ -64,7 +65,7 @@ class Api {
         'Content-Type': 'application/json'
       }
     })
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .then(this._checkResponse)
   }
 
   deleteLikeCards = (_id) => {
@@ -74,7 +75,7 @@ class Api {
         authorization: this._headers,
       }
     })
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .then(this._checkResponse)
   }
 
   putLikeCards = (_id) => {
@@ -84,7 +85,7 @@ class Api {
         authorization: this._headers,
       }
     })
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .then(this._checkResponse)
   }
 
   createCard = (data) => {
@@ -99,7 +100,7 @@ class Api {
         'Content-Type': 'application/json'
       }
     })
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .then(this._checkResponse)
   }
 }
 

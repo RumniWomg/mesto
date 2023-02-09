@@ -45,6 +45,7 @@ function createNewCard(data) { // создаем новые карточки н�
       function handleDeleteCardSubmit() {
         api.deleteCards(data._id)
           .then(res => {
+            console.log(res)
             card.deleteCard(res)
             popupCardDeleter.close();
           })
@@ -114,19 +115,14 @@ function handleFormAvatarSubmit(data) { // добавляем аватар
 }
 
 function handleCardFormSubmit(data) { // добавляем карточку
-  popupCard.setLoadText('Сохранение...')
-  api.createCard(data)
+  formAddValidator.resetFormCondition();
+  return api.createCard(data)
     .then(res => {
       cardContainer.prepend(createNewCard(res));
-      popupCard.close();
     })
     .catch((err) => {
       console.log(err);
     })
-    .finally(() => {
-      popupCard.setLoadText('Сохранить')
-    })
-  formAddValidator.resetFormCondition();
 }
 
 buttonOpenEditProfilePopup.addEventListener('click', () => { // открывает попап для редактирования профиля 
