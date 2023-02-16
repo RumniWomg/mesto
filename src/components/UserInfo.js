@@ -18,10 +18,10 @@ export class UserInfo {
   setUserInfo(userInfo) {
     this._userNameInfo.textContent = userInfo.name;
     this._aboutMeInfo.textContent = userInfo.about;
-    this._setUserAvatar(userInfo)
+    this.setUserAvatar(userInfo);
   }
 
-  _setUserAvatar(object) {
+  setUserAvatar(object) {
     this._userAvatar.src = object.avatar;
   }
 }
