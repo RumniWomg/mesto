@@ -43,21 +43,22 @@ function createNewCard(data) { // создаем новые карточки н�
       popupPicture.open(data.name, data.link);
     },
     handleTrashClick: () => {          // удаляем карточку
-      popupCardDeleter.open(); //открытие попап удаления карточки
+      popupCardDeleter.open();
       popupCardDeleter.setSubmitAction(() => {
-      api.deleteCards(data._id)
-        .then(res => {
-          card.deleteCard(res)
-          popupCardDeleter.close();
-        })
-        .then(popupCardDeleter.setLoadText('Удаление...'))
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          popupCardDeleter.setLoadText('Да')
-        })
-      });
+        popupCardDeleter.setLoadText('Удаление...');
+        api.deleteCards(data._id)
+          .then(res => {
+            card.deleteCard(res)
+            popupCardDeleter.close();
+          })
+          .then()
+          .catch((err) => {
+            console.log(err);
+          })
+          .finally(() => {
+            popupCardDeleter.setLoadText('Да')
+          })
+        });
     },
     handleLikeButtonClick: () => {  // ставим лайки
       api.putLikeCards(data._id)
@@ -100,7 +101,6 @@ function handleFormAvatarSubmit(data) { // добавляем аватар
   return api.setAvatar(data)
     .then(res => {
       profileInfo.setUserAvatar(res);
-      popupProfileAvatar.close();
     })
     .catch((err) => {
       console.log(err);
@@ -111,7 +111,7 @@ function handleCardFormSubmit(data) { // добавляем карточку
   formAddValidator.resetFormCondition();
   return api.createCard(data)
     .then(res => {
-      let arr = [res]
+      const arr = [res]
       cardsList.renderItems(arr);
     })
     .catch((err) => {
